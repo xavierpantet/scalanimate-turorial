@@ -43,29 +43,34 @@
         <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
         <div class="w3-main" style="margin-left:250px">
 
+            <div class="w3-row w3-padding-64 w3-container">
+                <h1 class="w3-text-teal">Introduction</h1>
+                <p>Scalanimate is a <a href="https://scala-lang.org/">Scala</a> library that allows you to draw into a canvas object on a web page. Widely inspired by <a href="https://scratch.mit.edu/">Scratch</a> and <a href="http://woofjs.com/">WoofJS</a>, it has been designed especially for beginners who intend to learn programming in an interactive way!</p>
+                <p>Scalanimate provides you with a very simple API that will let you draw simple shapes, animate them, look for collisions and more! This tutorial will show you everything you need to know before you can create your first game!</p>
+            </div>
+
             <div class="w3-row w3-padding-64 w3-container" id="gettingStartedSection">
                 <h1 class="w3-text-teal">Getting Started</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
-                </div>
+                <p>Before we can work, we first need to set up a few things...</p>
+                <h2>Install from Github</h2>
+                <ol>
+                    <li>You will first need to <span class="inlinedCode">git clone git@github.com:xavierpantet/scalanimate.git</span></li>
+                    <li>Write your code in <span class="inlinedCode">src/main/scala/Main.scala</span></li>
+                    <li>Run <span class="inlinedCode">sbt</span></li>
+                    <li>Run <span class="inlinedCode">fastOptJS</span> from the SBT console</li>
+                    <li>Your game is now accessible at <a href="localhost:12345">localhost:12345</a></li>
+                </ol>
 
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
-                </div>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
-                </div>
-
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
-                </div>
+                <h2>Install from SBT (Scala.js projects)</h2>
+                <ol>
+                    <li>Make sure you are using Scala 2.12+</li>
+                    <li>Add the following lines to your build.sbt:
+                    <pre><code>libraryDependencies += "default" %%% "scalanimate" % "1.0.1"
+resolvers += Resolver.bintrayRepo("xavierpantet", "scalanimate")</code></pre></li>
+                    <li>Write your scala code and compile it to Javascript using the <span class="inlinedCode">fastOptJS</span> command</li>
+                    <li>Include your JS file to your web page using standard HTML code:
+                    <pre><code>&lt;script src="./target/scala-2.12/your-project-name-fastopt.js"&gt;&lt;/script&gt;</code></pre></li>
+                </ol>
             </div>
 
             <div class="w3-row w3-padding-64 w3-container" id="examplesSection">
@@ -209,6 +214,14 @@
 
         <script src="./target/scala-2.12/scalanimate-tutorial-fastopt.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
+        <script>
+            $(document).ready(function() {
+                $('.inlinedCode').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+        </script>
     </body>
 </html>
