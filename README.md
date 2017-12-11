@@ -1,2 +1,2 @@
 ### Scalanimate
-You will find a detailed tutorial [here](https://xavier.pantet.ch/scalanimate).
+You will find a detailed tutorial [here](http://xavier.pantet.ch/scalanimate).
