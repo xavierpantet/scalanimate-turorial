@@ -75,6 +75,14 @@ resolvers += Resolver.bintrayRepo("xavierpantet", "scalanimate")</code></pre></l
                     <li>Include your JS file to your web page using standard HTML code:
                     <pre><code>&lt;script src="./target/scala-2.12/your-project-name-fastopt.js"&gt;&lt;/script&gt;</code></pre></li>
                 </ol>
+
+                <h2>Create a canvas</h2>
+                <p>In any case, every Scalanimate object that you will manipulate will need to be given a Canvas as parameter. A very convenient way of doing this is to make it implicit. We provide you with the 3 following constructors:</p>
+                <ul>
+                    <li><span class="inlinedCode">implicit val canvas = Canvas(element: HTMLCanvasElement)</span> that will simply convert a given HTML canvas into an object that is usable by Scalanimate.</li>
+                    <li><span class="inlinedCode">implicit val canvas = Canvas(element: HTMLCanvasElement, width: Int, height: Int)</span> that does the same thing but sets up the height and width of the canvas to the given values.</li>
+                    <li><span class="inlinedCode">implicit val canvas = Canvas(id: String, width: Int, height: Int) that will fetch the HTML element that has the given id and set up its height and width to the given values.</span></li>
+                </ul>
             </div>
 
             <div class="w3-row w3-padding-64 w3-container" id="examplesSection">
@@ -99,26 +107,24 @@ object Main{
 
             <div class="w3-row w3-padding-64 w3-container" id="shapesSection">
                 <h1 class="w3-text-teal">Shapes</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
+                <p>Shapes are the basic constructs for your games! Let's create a few ones!</p>
+                <h2>Drawing shapes</h2>
                 <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
+                    <pre><code class="scala">val circle = Circle(100, 50, 20)
+val rect = Rectangle(80, 130, 50, 120)
+val polygon = Polygon(200, 80, 30, 5)
+val oval = Oval(150, 20, 60, 40)</code></pre>
+                    <p>This will draw:</p>
+                    <ol>
+                        <li>A circle centered in (100, 50) with radius 20</li>
+                        <li>A rectangle whose bottom-left corner is at (200, 100) of height 50 and width 120</li>
+                        <li>A 5-sided polygon centered in (200, 80) of radius 30</li>
+                        <li>An oval centered in (150, 20) of width 60 and height 40</li>
+                    </ol>
                 </div>
 
                 <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
-                </div>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
-                </div>
-
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
+                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas id="shapesCanvas"></canvas></p>
                 </div>
             </div>
 
