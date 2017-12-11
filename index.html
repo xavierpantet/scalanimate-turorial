@@ -126,6 +126,93 @@ val oval = Oval(150, 20, 60, 40)</code></pre>
                 <div class="w3-half w3-container">
                     <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas id="shapesCanvas"></canvas></p>
                 </div>
+
+                <h2>Customizing shapes</h2>
+                <p>Shapes allow you to customize them in many ways!</p>
+
+                <h3>Colors</h3>
+                <div>
+                    <pre><code class="scala">val shape = ...
+
+// Changes fill color to red
+shape.fillColor = Color.red
+
+// Changes border color to blue
+shape.borderColor = Color.blue
+</code></pre>
+                </div>
+
+                <h3>Moving</h3>
+                <div>
+                    <pre><code class="scala">val shape = ...
+
+// Moves the shape to position (50, 80)
+shape.x = 50
+shape.x = 80
+// You can perform the same thing like this
+shape.moveTo(50, 80)
+
+// Moves the shape by 10 pixels to the right and 5 pixels to the top
+shape.x += 10
+shape.y -= 5
+// Alternatively, you can do
+shape.move(10, -5)
+
+// Moves the shape 20 pixels along its direction
+shape.move(20)
+</code></pre>
+                </div>
+
+                <h3>Rotating</h3>
+                <div>
+                    <pre><code class="scala">val shape = ...
+
+// Rotates the shape of 15°
+shape.turnLeft(15)
+shape.turnRight(15)
+
+// Rotates the shape to point to (x, y)
+shape.pointTowards(x, y)
+
+// Rotates the shape to point to another shape
+shape.pointTowards(otherShape)
+</code></pre>
+                </div>
+
+                <h3>Showing / Hiding</h3>
+                <div>
+                    <pre><code class="scala">val shape = ...
+shape.show
+shape.hide
+</code></pre>
+                </div>
+
+                <h3>Other controls</h3>
+                <div>
+                    <pre><code class="scala">val shape = ...
+
+// Distance between two shapes
+shape.distanceTo(otherShape)
+
+// Know if (x, y) belongs to a shape
+shape.contains(x, y)
+
+// Collision detection between shapes
+shape.touches(otherShape)
+
+// Collision detection with edges of the canvas
+shape.touchesEdge
+
+// Reacting to user input
+shape.onMouseDown = _ => {
+    your code here...
+}
+
+shape.onMouseUp = _ => {
+    your code here...
+}
+</code></pre>
+                </div>
             </div>
 
             <div class="w3-row w3-padding-64 w3-container" id="imagesSection">
