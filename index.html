@@ -19,6 +19,10 @@
             bottom: 0;
             height: inherit;
         }
+
+        .inlinedCode{
+            display: inline;
+        }
     </style>
     <body>
         <!-- Navbar -->
@@ -58,7 +62,7 @@
                     <li>Write your code in <span class="inlinedCode">src/main/scala/Main.scala</span></li>
                     <li>Run <span class="inlinedCode">sbt</span></li>
                     <li>Run <span class="inlinedCode">fastOptJS</span> from the SBT console</li>
-                    <li>Your game is now accessible at <a href="localhost:12345">localhost:12345</a></li>
+                    <li>Your game is now accessible at <a href="localhost:12345/index.html">localhost:12345/index.html</a></li>
                 </ol>
 
                 <h2>Install from SBT (Scala.js projects)</h2>
@@ -75,27 +79,22 @@ resolvers += Resolver.bintrayRepo("xavierpantet", "scalanimate")</code></pre></l
 
             <div class="w3-row w3-padding-64 w3-container" id="examplesSection">
                 <h1 class="w3-text-teal">Examples</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
+                <p>You will find all the examples in the <span class="inlinedCode">scalanimate.examples</span> package.</p>
+                <div>
+                    <pre><code class="scala">import scalanimate.examples._
+object Main{
+    def main(args: Array[String]): Unit = {
+        /* Uncomment the desired example: */
+
+        // WoofJSExample.run
+        // SimplePongExample.run
+        // SpaceGameExample.run
+        // MicroSnakeExample.run
+        // HandsOnScalaJSExample.run
+    }
 }</code></pre>
                 </div>
-
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
-                </div>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
-                </div>
-
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
-                </div>
+                <p>You can visualize them by opening <a href="localhost:12345/index.html">localhost:12345/index.html</a></p>
             </div>
 
             <div class="w3-row w3-padding-64 w3-container" id="shapesSection">
