@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <title>Scalanimate Tutorial</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -217,76 +217,93 @@ shape.onMouseUp = _ => {
 
             <div class="w3-row w3-padding-64 w3-container" id="imagesSection">
                 <h1 class="w3-text-teal">Images</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
+                <p>Images provide the exact same API as shapes, with a few additions that you'll find here.</p>
+                <div>
+                    <pre><code class="scala">// Create an image from WoofJS library. Top left corner at (100, 100) with height and width 50
+val image = Image(Image.Puppy, 100, 100, 50, 50)
+
+// The same thing applies to backgrounds
+val background = Image(Background.Space, 0, 0, width, height)
+
+// Custom images
+val image = Image("http://your-site.com/your-image.png", 100, 100, 50, 50)</code></pre>
                 </div>
 
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
-                </div>
+                <p>Images provide you with the following additional API:</p>
+                <pre><code class="scala">val image = ...
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
-                </div>
-
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
-                </div>
+// Flip horizontally + vertically
+image.flipX
+image.flipY
+</code></pre>
             </div>
 
             <div class="w3-row w3-padding-64 w3-container" id="controlsSection">
                 <h1 class="w3-text-teal">Controls</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
-                </div>
+                <p>Controls allow you to react to user inputs (mouse clicks and keyboard usage).</p>
+                <div>
+                    <pre><code class="scala">val canvas = Canvas("myCanvas", width, height)
+canvas.onMouseDown = _ => {
+    your code here...
+}
 
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
-                </div>
+canvas.onMouseUp = _ => {
+    your code here...
+}
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
-}</code></pre>
-                </div>
-
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
+// Access pressed keyboard keys
+canvas.keysDown
+</code></pre>
                 </div>
             </div>
 
             <div class="w3-row w3-padding-64 w3-container" id="timeControlsSection">
                 <h1 class="w3-text-teal">Time Controls</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
+                <p>Time Controls allow you to write loops and animate your code in a very simple way.</p>
+                <div>
+                    <pre><code class="scala">ready{
+    your code here...
 }</code></pre>
+                <p>This will execute your code once and automatically refresh the rendering of your game every 20ms.</p>
                 </div>
 
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
+                <div>
+                    <pre><code class="scala">every(20.milliseconds){ t => {
+    your code here...
+    // variable t contains the current "tick" number
+}}</code></pre>
+                    <p>This will execute your every 20ms. It is very useful to give an impression of mouvement to your games!</p>
                 </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis lacus ipsum, eget sollicitudin ex semper consequat. Curabitur id bibendum purus. Curabitur pulvinar risus nec lacus convallis, eu consectetur sapien tristique. Mauris facilisis dui nec consequat ullamcorper. Phasellus condimentum ligula non efficitur suscipit. Curabitur viverra vulputate lorem nec elementum. Donec eu varius enim.</p>
-                <div class="w3-half">
-                    <pre><code class="scala">object Main{
-    def f() = println("HelloWorld")
+                <div>
+                    <pre><code class="scala">everyIncr(20.milliseconds){ t => {
+    your code here...
+    // variable t contains the current "tick" number
+}}</code></pre>
+                    <p>This is a specific version of the standard every method. The difference is that the canvas is not updated here.</p>
+                </div>
+
+                <div>
+                    <pre><code class="scala">after(1.second){
+    your code here...
 }</code></pre>
+                    <p>This will execute your code after 1 second.</p>
                 </div>
 
-                <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas></canvas></p>
+                <div>
+                    <pre><code class="scala">repeatWhile(condition, 20.milliseconds){ t => {
+    your code here...
+     // variable t contains the current "tick" number
+}}</code></pre>
+                    <p>This will execute your code every 20ms until cond is not verified.</p>
+                </div>
+
+                <div>
+                    <pre><code class="scala">repeat(10, 20.milliseconds){ t => {
+    your code here...
+     // variable t contains the current "tick" number
+}}</code></pre>
+                    <p>This will execute your code every 20ms 10 times.</p>
                 </div>
             </div>
 
