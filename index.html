@@ -22,6 +22,7 @@
 
         .inlinedCode{
             display: inline;
+            padding: .2em;
         }
     </style>
     <body>
@@ -81,7 +82,7 @@ resolvers += Resolver.bintrayRepo("xavierpantet", "scalanimate")</code></pre></l
                 <ul>
                     <li><span class="inlinedCode">implicit val canvas = Canvas(element: HTMLCanvasElement)</span> that will simply convert a given HTML canvas into an object that is usable by Scalanimate.</li>
                     <li><span class="inlinedCode">implicit val canvas = Canvas(element: HTMLCanvasElement, width: Int, height: Int)</span> that does the same thing but sets up the height and width of the canvas to the given values.</li>
-                    <li><span class="inlinedCode">implicit val canvas = Canvas(id: String, width: Int, height: Int) that will fetch the HTML element that has the given id and set up its height and width to the given values.</span></li>
+                    <li><span class="inlinedCode">implicit val canvas = Canvas(id: String, width: Int, height: Int)</span> that will fetch the HTML element that has the given id and set up its height and width to the given values.</li>
                 </ul>
             </div>
 
@@ -127,15 +128,16 @@ val oval = Oval(150, 20, 60, 40)</code></pre>
                 </div>
 
                 <div class="w3-half w3-container">
-                    <p class="w3-border w3-padding-large w3-padding-32 w3-center"><canvas id="shapesCanvas"></canvas></p>
+                    <p class="w3-border w3-center"><canvas id="shapesCanvas"></canvas></p>
                 </div>
 
-                <h2>Customizing shapes</h2>
-                <p>Shapes allow you to customize them in many ways!</p>
+                <div class="w3-col">
+                    <h2>Customizing shapes</h2>
+                    <p>Shapes allow you to customize them in many ways!</p>
 
-                <h3>Colors</h3>
-                <div>
-                    <pre><code class="scala">val shape = ...
+                    <h3>Colors</h3>
+                    <div>
+                        <pre><code class="scala">val shape = ...
 
 // Changes fill color to red
 shape.fillColor = Color.red
@@ -143,11 +145,11 @@ shape.fillColor = Color.red
 // Changes border color to blue
 shape.borderColor = Color.blue
 </code></pre>
-                </div>
+                    </div>
 
-                <h3>Moving</h3>
-                <div>
-                    <pre><code class="scala">val shape = ...
+                    <h3>Moving</h3>
+                    <div>
+                        <pre><code class="scala">val shape = ...
 
 // Moves the shape to position (50, 80)
 shape.x = 50
@@ -164,11 +166,11 @@ shape.move(10, -5)
 // Moves the shape 20 pixels along its direction
 shape.move(20)
 </code></pre>
-                </div>
+                    </div>
 
-                <h3>Rotating</h3>
-                <div>
-                    <pre><code class="scala">val shape = ...
+                    <h3>Rotating</h3>
+                    <div>
+                        <pre><code class="scala">val shape = ...
 
 // Rotates the shape of 15°
 shape.turnLeft(15)
@@ -180,19 +182,19 @@ shape.pointTowards(x, y)
 // Rotates the shape to point to another shape
 shape.pointTowards(otherShape)
 </code></pre>
-                </div>
+                    </div>
 
-                <h3>Showing / Hiding</h3>
-                <div>
-                    <pre><code class="scala">val shape = ...
+                    <h3>Showing / Hiding</h3>
+                    <div>
+                        <pre><code class="scala">val shape = ...
 shape.show
 shape.hide
 </code></pre>
-                </div>
+                    </div>
 
-                <h3>Other controls</h3>
-                <div>
-                    <pre><code class="scala">val shape = ...
+                    <h3>Other controls</h3>
+                    <div>
+                        <pre><code class="scala">val shape = ...
 
 // Distance between two shapes
 shape.distanceTo(otherShape)
@@ -215,6 +217,7 @@ shape.onMouseUp = _ => {
     your code here...
 }
 </code></pre>
+                    </div>
                 </div>
             </div>
 
@@ -246,11 +249,12 @@ image.flipY
                 <p>Controls allow you to react to user inputs (mouse clicks and keyboard usage).</p>
                 <div>
                     <pre><code class="scala">val canvas = Canvas("myCanvas", width, height)
-canvas.onMouseDown = _ => {
+// These are Scala.js primitives
+canvas.onmousedown = (MouseEvent: e) => {
     your code here...
 }
 
-canvas.onMouseUp = _ => {
+canvas.onmouseup = (MouseEvent: e) => {
     your code here...
 }
 
@@ -272,16 +276,16 @@ canvas.keysDown
 
                 <div>
                     <pre><code class="scala">every(20.milliseconds){ t => {
-    your code here...
     // variable t contains the current "tick" number
+    your code here...
 }}</code></pre>
                     <p>This will execute your every 20ms. It is very useful to give an impression of mouvement to your games!</p>
                 </div>
 
                 <div>
                     <pre><code class="scala">everyIncr(20.milliseconds){ t => {
-    your code here...
     // variable t contains the current "tick" number
+    your code here...
 }}</code></pre>
                     <p>This is a specific version of the standard every method. The difference is that the canvas is not updated here.</p>
                 </div>
@@ -295,18 +299,18 @@ canvas.keysDown
 
                 <div>
                     <pre><code class="scala">repeatWhile(condition, 20.milliseconds){ t => {
+    // variable t contains the current "tick" number
     your code here...
-     // variable t contains the current "tick" number
 }}</code></pre>
-                    <p>This will execute your code every 20ms until cond is not verified.</p>
+                    <p>This will execute your code every 20ms until the condition is not verified anymore.</p>
                 </div>
 
                 <div>
                     <pre><code class="scala">repeat(10, 20.milliseconds){ t => {
+    // variable t contains the current "tick" number
     your code here...
-     // variable t contains the current "tick" number
 }}</code></pre>
-                    <p>This will execute your code every 20ms 10 times.</p>
+                    <p>This will execute your code 10 times every 20ms.</p>
                 </div>
             </div>
 
